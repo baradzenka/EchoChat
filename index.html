@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/images/favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/>	
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital@0;1&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
+	<link href="index.css" rel="stylesheet">
+	<title>Echo chat</title>
+</head>
+
+<body>
+
+	<!-- Не использую тег 'main' т.к. чат - это всего лишь компонент на странице,
+		который можно переиспользовать, и в данном случае никакого основного 
+		содержимого страницы нет -->
+	<section class="chat">
+		<h1 class="visually-hidden">Echo chat</h1>
+
+		<div class="chat-title">
+			<div class="chat-title__img"></div>
+			<div class="chat-title__text">Talking to the Echo server
+				<address>wss://echo-ws-service.herokuapp.com</address></div>
+		</div>
+
+		<div class="chat-content">
+			<div class="msg-list"></div>
+		</div>
+
+		<div class="chat-control">
+			<div class="chat-control__msg-area">
+				<textarea></textarea>
+				<button class="tooltip-owner" type="button">
+					<span class="tooltip">Send your message</span>
+				</button>
+			</div>
+			<button class="chat-control__geo-btn tooltip-owner" type="button">
+				<span class="tooltip">Get your location</span>
+			</button>
+		</div>
+
+		<div class="banner-error"></div>
+	</section>
+
+
+	<script src="index.js"></script>
+
+</body>
+
+</html>
