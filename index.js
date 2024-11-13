@@ -1,6 +1,7 @@
 
 
-const serviceUrl = "wss://echo-ws-service.herokuapp.com";
+//const serviceUrl = "wss://echo-ws-service.herokuapp.com";
+const serviceUrl = "https://echo.websocket.org";
 
 
 const inputMsg = document.querySelector(".chat .chat-control__msg-area textarea");
@@ -14,18 +15,28 @@ const divBannerError = document.querySelector(".chat .banner-error");
 
 
 
+document.querySelector(".chat-title__address").innerHTML = serviceUrl;
+
+
 let socket = new WebSocket(serviceUrl);
 
 socket.onmessage = function(event)
 {
-	const msg = JSON.parse(event.data);
-	if(msg &&
-		msg.hasOwnProperty("type") && msg.type === "message" &&
-		msg.hasOwnProperty("text") &&	typeof(msg.text) === "string")
+	try
 	{
-		AddResponseToLayout(msg.text);
+		const msg = JSON.parse(event.data);
+		if(msg &&
+			msg.hasOwnProperty("type") && msg.type === "message" &&
+			msg.hasOwnProperty("text") &&	typeof(msg.text) === "string")
+		{
+			AddResponseToLayout(msg.text);
+		}
+	}
+	catch
+	{
 	}
 };
+
 socket.onclose = function(event)
 {
 	let msg = (!event.wasClean && event.code===1006 ?
